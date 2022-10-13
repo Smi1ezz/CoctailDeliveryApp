@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		08529BED8E0C7C7659977745 /* Pods_CocktailDeliveryApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58EE734540C4101EB42AC5B7 /* Pods_CocktailDeliveryApp.framework */; };
 		84DC946E28F869D200281FA5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DC946D28F869D200281FA5 /* AppDelegate.swift */; };
 		84DC947028F869D200281FA5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DC946F28F869D200281FA5 /* SceneDelegate.swift */; };
 		84DC947228F869D200281FA5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DC947128F869D200281FA5 /* ViewController.swift */; };
@@ -16,6 +17,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1B70F53840ED0D81B4BF7AF7 /* Pods-CocktailDeliveryApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CocktailDeliveryApp.release.xcconfig"; path = "Target Support Files/Pods-CocktailDeliveryApp/Pods-CocktailDeliveryApp.release.xcconfig"; sourceTree = "<group>"; };
+		319403FB171DE1DDA4191BB4 /* Pods-CocktailDeliveryApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CocktailDeliveryApp.debug.xcconfig"; path = "Target Support Files/Pods-CocktailDeliveryApp/Pods-CocktailDeliveryApp.debug.xcconfig"; sourceTree = "<group>"; };
+		58EE734540C4101EB42AC5B7 /* Pods_CocktailDeliveryApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CocktailDeliveryApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		84DC946A28F869D100281FA5 /* CocktailDeliveryApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CocktailDeliveryApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84DC946D28F869D200281FA5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84DC946F28F869D200281FA5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -31,17 +35,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				08529BED8E0C7C7659977745 /* Pods_CocktailDeliveryApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1C5D4AE32817D35814C5A502 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				58EE734540C4101EB42AC5B7 /* Pods_CocktailDeliveryApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2D5F402114994A5672DC67AA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				319403FB171DE1DDA4191BB4 /* Pods-CocktailDeliveryApp.debug.xcconfig */,
+				1B70F53840ED0D81B4BF7AF7 /* Pods-CocktailDeliveryApp.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		84DC946128F869D100281FA5 = {
 			isa = PBXGroup;
 			children = (
 				84DC946C28F869D100281FA5 /* CocktailDeliveryApp */,
 				84DC946B28F869D100281FA5 /* Products */,
+				2D5F402114994A5672DC67AA /* Pods */,
+				1C5D4AE32817D35814C5A502 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -74,9 +98,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 84DC947E28F869D600281FA5 /* Build configuration list for PBXNativeTarget "CocktailDeliveryApp" */;
 			buildPhases = (
+				8DA80FE075404D653E2ACD23 /* [CP] Check Pods Manifest.lock */,
 				84DC946628F869D100281FA5 /* Sources */,
 				84DC946728F869D100281FA5 /* Frameworks */,
 				84DC946828F869D100281FA5 /* Resources */,
+				B1BB791A4EE14DC06BFB7EDD /* [CP] Embed Pods Frameworks */,
+				84DC948128F86BB400281FA5 /* Run Script */,
 			);
 			buildRules = (
 			);
@@ -132,6 +159,66 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		84DC948128F86BB400281FA5 /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\" autocorrect && \"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
+		8DA80FE075404D653E2ACD23 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CocktailDeliveryApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B1BB791A4EE14DC06BFB7EDD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CocktailDeliveryApp/Pods-CocktailDeliveryApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CocktailDeliveryApp/Pods-CocktailDeliveryApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CocktailDeliveryApp/Pods-CocktailDeliveryApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		84DC946628F869D100281FA5 /* Sources */ = {
@@ -284,6 +371,7 @@
 		};
 		84DC947F28F869D600281FA5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 319403FB171DE1DDA4191BB4 /* Pods-CocktailDeliveryApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -297,7 +385,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -313,6 +401,7 @@
 		};
 		84DC948028F869D600281FA5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1B70F53840ED0D81B4BF7AF7 /* Pods-CocktailDeliveryApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -326,7 +415,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
