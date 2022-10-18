@@ -24,7 +24,6 @@
 		84DC949528F99C4D00281FA5 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DC949428F99C4D00281FA5 /* CategoryCollectionViewCell.swift */; };
 		84DC949728F99C5700281FA5 /* MenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DC949628F99C5700281FA5 /* MenuCollectionViewCell.swift */; };
 		84DC949928FAA3BE00281FA5 /* CategoryCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DC949828FAA3BE00281FA5 /* CategoryCollectionReusableView.swift */; };
-		84DC949B28FAE2D600281FA5 /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DC949A28FAE2D600281FA5 /* ContactsViewController.swift */; };
 		84DC949E28FD84CF00281FA5 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DC949D28FD84CE00281FA5 /* Colors.swift */; };
 		84DC94A128FDD38200281FA5 /* UICollectionViewWithComletion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DC94A028FDD38100281FA5 /* UICollectionViewWithComletion.swift */; };
 		84DC94A328FE916F00281FA5 /* PriceUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DC94A228FE916F00281FA5 /* PriceUIView.swift */; };
@@ -52,7 +51,6 @@
 		84DC949428F99C4D00281FA5 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		84DC949628F99C5700281FA5 /* MenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewCell.swift; sourceTree = "<group>"; };
 		84DC949828FAA3BE00281FA5 /* CategoryCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionReusableView.swift; sourceTree = "<group>"; };
-		84DC949A28FAE2D600281FA5 /* ContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
 		84DC949D28FD84CE00281FA5 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		84DC94A028FDD38100281FA5 /* UICollectionViewWithComletion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewWithComletion.swift; sourceTree = "<group>"; };
 		84DC94A228FE916F00281FA5 /* PriceUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceUIView.swift; sourceTree = "<group>"; };
@@ -151,7 +149,6 @@
 				84DC949428F99C4D00281FA5 /* CategoryCollectionViewCell.swift */,
 				84DC949628F99C5700281FA5 /* MenuCollectionViewCell.swift */,
 				84DC949828FAA3BE00281FA5 /* CategoryCollectionReusableView.swift */,
-				84DC949A28FAE2D600281FA5 /* ContactsViewController.swift */,
 				84DC94A228FE916F00281FA5 /* PriceUIView.swift */,
 			);
 			path = Views;
@@ -316,7 +313,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				84DC948428F86E1400281FA5 /* NetworkManager.swift in Sources */,
-				84DC949B28FAE2D600281FA5 /* ContactsViewController.swift in Sources */,
 				84DC947228F869D200281FA5 /* ViewController.swift in Sources */,
 				84DC948F28F97F3100281FA5 /* Presenter.swift in Sources */,
 				84DC949928FAA3BE00281FA5 /* CategoryCollectionReusableView.swift in Sources */,

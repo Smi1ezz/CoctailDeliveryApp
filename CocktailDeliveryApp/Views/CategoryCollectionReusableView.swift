@@ -13,11 +13,10 @@ class CategoryCollectionReusableView: UICollectionReusableView {
     private var delegate: MenuViewDelegate?
     private var categoryToCheck: String?
 
-    var collectionView: UICollectionViewWithComletion = {
+    private var collectionView: UICollectionViewWithComletion = {
         let collectionViewLayout = UICollectionViewFlowLayout()
         collectionViewLayout.scrollDirection = .horizontal
         let collection = UICollectionViewWithComletion(frame: .zero, collectionViewLayout: collectionViewLayout)
-
         collection.showsHorizontalScrollIndicator = false
         collection.backgroundColor = UIColor.appColor(name: .appNaviBarBackground)
         return collection
@@ -50,7 +49,6 @@ class CategoryCollectionReusableView: UICollectionReusableView {
             }
             self?.collectionView.selectItem(at: IndexPath(item: 0, section: 0), animated: true, scrollPosition: .centeredHorizontally)
         }
-
     }
 
     func setDelegate(_ delegate: MenuViewDelegate) {
@@ -65,18 +63,19 @@ class CategoryCollectionReusableView: UICollectionReusableView {
         guard let categories = categories, checkedCategory != categoryToCheck else {
             return
         }
-        print("checkCategory," + checkedCategory)
 
         categoryToCheck = checkedCategory
         for (index, category) in categories.enumerated() where category == checkedCategory {
-            collectionView.selectItem(at: IndexPath(item: index, section: 0), animated: true, scrollPosition: .centeredHorizontally)
+            collectionView.selectItem(at: IndexPath(item: index, section: 0),
+                                      animated: true,
+                                      scrollPosition: .centeredHorizontally)
         }
     }
 
     private func setupSubviews() {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        self.collectionView.delegate = self
-        self.collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.dataSource = self
         collectionView.register(CategoryCollectionViewCell.self, forCellWithReuseIdentifier: "CategoryCollectionViewCell")
         self.addSubview(collectionView)
         setupConstraints()
@@ -84,7 +83,7 @@ class CategoryCollectionReusableView: UICollectionReusableView {
 
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            self.heightAnchor.constraint(equalToConstant: 68),
+            self.heightAnchor.constraint(equalToConstant: 80-12),
 
             collectionView.topAnchor.constraint(equalTo: self.topAnchor),
             collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
@@ -92,13 +91,11 @@ class CategoryCollectionReusableView: UICollectionReusableView {
             collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
     }
-
 }
 
 extension CategoryCollectionReusableView: UICollectionViewDataSource {
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-
         return categories?.isEmpty ?? true ? 0 : 1
     }
 
@@ -108,23 +105,16 @@ extension CategoryCollectionReusableView: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCollectionViewCell", for: indexPath) as? CategoryCollectionViewCell else {
-            print("Wrong cell")
             return UICollectionViewCell()
         }
         cell.setLabel(categories?[indexPath.item] ?? "wrong")
-        cell.changeIndexTo(index: indexPath.item)
-
         return cell
     }
-
 }
 
 extension CategoryCollectionReusableView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
-        print("collection cell tapped")
         delegate?.scrollTo(category: categories?[indexPath.item] ?? "")
-
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -134,7 +124,6 @@ extension CategoryCollectionReusableView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 88, height: 32)
     }
-
 }
 
 extension CategoryCollectionReusableView: UICollectionViewDelegate {

@@ -29,7 +29,6 @@ class Presenter: PresenterProtocol {
     func getCategories() {
         barModel.getCategories { [weak self] categoriesArray in
             guard let categoriesArray = categoriesArray else {
-                print("Presenter let categoriesArray = categoriesArray nil")
                 return
             }
             DispatchQueue.main.async {
@@ -42,7 +41,6 @@ class Presenter: PresenterProtocol {
     func getImage(fromUrl url: String?, complition: @escaping (UIImage?) -> Void) {
         barModel.getImage(url: url) { image in
             guard let image = image else {
-                print("no UIImage in call")
                 complition(nil)
                 return
             }
@@ -54,7 +52,6 @@ class Presenter: PresenterProtocol {
         categories.forEach { category in
             barModel.getCoctailsBy(category: category) { [weak self] coctails in
                 guard let coctails = coctails else {
-                    print("Presenter let coctail = coctail nil")
                     return
                 }
                 DispatchQueue.main.async {

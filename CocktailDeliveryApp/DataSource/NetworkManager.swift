@@ -17,8 +17,6 @@ class NetworkManager: NetworkManagerProtocol {
     func fetchData<T: Codable>(endpoint: EndpointProtocol, modelType: T.Type, complition: @escaping (Swift.Result<Codable, Error>) -> Void) {
 
         guard let urlString = endpoint.strURL else {
-            print("urlString = endpoint.strURL nil")
-
             return
         }
 

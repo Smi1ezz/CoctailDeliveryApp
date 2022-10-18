@@ -22,7 +22,6 @@ protocol EndpointProtocol {
     var path: String {get}
     var parameters: [URLQueryItem] {get}
     var strURL: String? {get}
-
 }
 
 enum Endpoint: EndpointProtocol {
@@ -85,12 +84,5 @@ enum Endpoint: EndpointProtocol {
 
         return urlComponents.string
     }
-
-//    func singlePhotoEndpoint(id: String) -> [URLQueryItem] {
-//        return [URLQueryItem(name: "client_id", value: "WKyQ7vpmCzL06dijhELIkIYRYZDzz1GisBLIA3lxKek"),
-//                URLQueryItem(name: "id", value: id)
-//        ]
-//
-//    }
 
 }

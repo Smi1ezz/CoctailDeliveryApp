@@ -9,18 +9,15 @@ import Foundation
 import UIKit
 
 protocol MenuViewDelegate: NSObjectProtocol {
-    // сюда вписать все методы VC для передачи data из Presenter в View
     func setCategories(_ categories: [String])
     func addCoctailsToMenu(coctails: [Drink], fromCategory: String)
     func scrollTo(category: String)
 }
 
 class MenuViewController: UIViewController, MenuViewDelegate {
-    // MARK: - я понимаю, что для следования принципу DI следует внедрять все зависимости извне, но для экономии времени на выполнение тестового задания, я выбрал верстку преимущественно через storyboard и поэтому пренебрегаю этим знанием. В реальном проекте я бы предложил отказаться от сториборд и внедрить роутер и\или координатор для инициализации viewController'ов и внедрения зависимостей.
-
     private var presenter: PresenterProtocol?
     private var categories = [String]()
-    private var coctailsMenu = [String: [Drink]]()
+    private var coctailsByCategories = [String: [Drink]]()
     private var allCoctails = [Drink]()
 
     private var collectionView: UICollectionView = {
@@ -57,9 +54,9 @@ class MenuViewController: UIViewController, MenuViewDelegate {
             var drink = coct
             coctWithCategs.insert(drink.setCategory(str: fromCategory), at: index)
         }
-        coctailsMenu[fromCategory] = coctWithCategs
+        coctailsByCategories[fromCategory] = coctWithCategs
 
-        if coctailsMenu.count == categories.count {
+        if coctailsByCategories.count == categories.count {
             fillMenu()
         }
     }
@@ -79,12 +76,13 @@ class MenuViewController: UIViewController, MenuViewDelegate {
         collectionView.register(MenuCollectionViewCell.self, forCellWithReuseIdentifier: "MenuCollectionViewCell")
         collectionView.register(CategoryCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "CategoryCollectionReusableView")
         collectionView.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "UICollectionReusableView")
+        collectionView.backgroundColor = UIColor.white
 
         collectionView.collectionViewLayout = generateLayout()
     }
 
     private func fillMenu() {
-        categories.forEach({allCoctails += coctailsMenu[$0] ?? []})
+        categories.forEach({allCoctails += coctailsByCategories[$0] ?? []})
         collectionView.reloadSections([1])
     }
 
@@ -97,11 +95,10 @@ class MenuViewController: UIViewController, MenuViewDelegate {
         navigationController?.navigationBar.tintColor = .black
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(
-            title: "Москва ⋁",
+            title: "Москва",
             style: .plain,
             target: self,
             action: #selector(selectCityAction))
-
     }
 
     @objc
@@ -110,19 +107,13 @@ class MenuViewController: UIViewController, MenuViewDelegate {
     }
 
     private func setupSubviews() {
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.collectionView)
-
-        self.collectionView.backgroundColor = UIColor.white
 
         setupConstraints()
     }
 
-    func checkCategory(_ category: String) {
-
-    }
-
     private func setupConstraints() {
-        self.collectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             self.collectionView.topAnchor.constraint(equalTo: self.view.layoutMarginsGuide.topAnchor),
             self.collectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
@@ -185,7 +176,6 @@ class MenuViewController: UIViewController, MenuViewDelegate {
         let headerElement = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
 
         headerElement.pinToVisibleBounds = true
-
         section.boundarySupplementaryItems = [headerElement]
 
         return section
@@ -257,13 +247,11 @@ extension MenuViewController: UICollectionViewDataSource {
         switch indexPath.section {
         case 0:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BannerCollectionViewCell", for: indexPath) as? BannerCollectionViewCell else {
-                print("Wrong cell")
                 return UICollectionViewCell()
             }
             return cell
         case 1:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MenuCollectionViewCell", for: indexPath) as? MenuCollectionViewCell else {
-                print("Wrong cell")
                 return UICollectionViewCell()
             }
             cell.setupCell(ofCoctail: allCoctails[indexPath.item],
@@ -274,22 +262,19 @@ extension MenuViewController: UICollectionViewDataSource {
                     cell.setImage(image)
                 }
             })
-
             return cell
         default:
             return UICollectionViewCell()
         }
-
     }
-
 }
 
 extension MenuViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
 
-        let array = collectionView.visibleSupplementaryViews(ofKind: UICollectionView.elementKindSectionHeader)
+        let headersAndFootersArray = collectionView.visibleSupplementaryViews(ofKind: UICollectionView.elementKindSectionHeader)
 
-        guard !array.isEmpty, !allCoctails.isEmpty, let header = array.first as? CategoryCollectionReusableView else {
+        guard !headersAndFootersArray.isEmpty, !allCoctails.isEmpty, let header = headersAndFootersArray.first as? CategoryCollectionReusableView else {
             return
         }
 

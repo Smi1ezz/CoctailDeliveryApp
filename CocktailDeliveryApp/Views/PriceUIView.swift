@@ -8,7 +8,7 @@
 import UIKit
 
 class PriceUIView: UIView {
-    var priceLabel: UILabel = {
+    private var priceLabel: UILabel = {
         let priceLabel = UILabel()
         priceLabel.font = .systemFont(ofSize: 13)
         priceLabel.textColor = UIColor.appColor(name: .appCategHeaderSelectedTextPink)
@@ -41,9 +41,6 @@ class PriceUIView: UIView {
     }
 
     private func setupConstraints() {
-//        guard let superview = superview else {
-//            return
-//        }
         NSLayoutConstraint.activate([
             priceLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             priceLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor)

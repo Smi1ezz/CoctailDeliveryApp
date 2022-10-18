@@ -9,8 +9,6 @@ import UIKit
 
 class CategoryCollectionViewCell: UICollectionViewCell {
 
-    private var index: Int?
-
     private var categLabel: UILabel = {
        let label = UILabel()
         label.font = .systemFont(ofSize: 13)
@@ -38,10 +36,6 @@ class CategoryCollectionViewCell: UICollectionViewCell {
             categLabel.textColor = isSelected ? UIColor.appColor(name: .appCategHeaderSelectedTextPink) : UIColor.appColor(name: .appCategHeaderDeselectedPink)
             categLabel.font = isSelected ? UIFont.boldSystemFont(ofSize: 13) : UIFont.systemFont(ofSize: 13)
         }
-    }
-
-    func changeIndexTo(index: Int) {
-        self.index = index
     }
 
     func setLabel(_ text: String) {
